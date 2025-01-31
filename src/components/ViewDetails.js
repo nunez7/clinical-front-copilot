@@ -24,7 +24,7 @@ function ViewDetails() {
       <p><strong>Last Name:</strong> {patient.lastName}</p>
       <p><strong>Age:</strong> {patient.age}</p>
       <h3>Clinical Data</h3>
-      <table>
+      <table align='center' className='greenTable'>
         <thead>
           <tr>
             <th>ID</th>

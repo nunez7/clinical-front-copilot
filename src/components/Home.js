@@ -18,14 +18,14 @@ function Home() {
   return (
     <div>
       <h1>Patient Details</h1>
-      <table>
+      <table align='center' className='greenTable'>
         <thead>
           <tr>
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
-            <th></th>
+            <th colSpan={2}>Actions</th>
           </tr>
         </thead>
         <tbody>

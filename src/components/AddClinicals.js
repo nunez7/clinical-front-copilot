@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams , useNavigate} from 'react-router-dom';
 import {  toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 function AddClinicals() {
   const [patient, setPatient] = useState({});
@@ -70,6 +71,7 @@ function AddClinicals() {
         </div>
         <button type="submit">Add Data</button>
       </form>
+      <Link to="/">Go Back</Link>
     </div>
   );
 }

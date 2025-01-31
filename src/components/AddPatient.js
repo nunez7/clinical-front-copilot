@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {  toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 function AddPatient() {
   const [firstName, setFirstName] = useState('');
@@ -23,7 +24,7 @@ function AddPatient() {
       });
     };
   return (
-    <div>
+      <div>
       <h1>Add Patient</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -52,7 +53,8 @@ function AddPatient() {
         </div>
         <button type="submit">Add Patient</button>
       </form>
-    </div>
+      <Link to="/">Go Back</Link>
+      </div>
   );
 }
 

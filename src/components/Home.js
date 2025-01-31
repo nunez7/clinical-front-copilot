@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {  toast } from 'react-toastify';
 
 function Home() {
   const [patientDetails, setPatientDetails] = useState([]);
@@ -15,6 +16,20 @@ function Home() {
       });
   }, []);
 
+  const handleDelete = (patientId) => {
+    if (window.confirm('Are you sure you want to delete this patient?')) {
+      axios.delete(`http://localhost:8080/api/clinical/patients/${patientId}`)
+        .then(response => {
+          toast.success('Patient deleted successfully!');
+          setPatientDetails(patientDetails.filter(patient => patient.id !== patientId));
+        })
+        .catch(error => {
+          console.error('There was an error deleting the patient!', error);
+          toast.error('There was an error deleting the patient!');
+        });
+    }
+  };
+
   return (
     <div>
       <h1>Patient Details</h1>
@@ -25,7 +40,7 @@ function Home() {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
-            <th colSpan={2}>Actions</th>
+            <th colSpan={3}>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +55,9 @@ function Home() {
               </td>
               <td>
                 <Link to={`/addClinicals/${patient.id}`}>Add Clinical Data</Link>
+              </td>
+              <td>
+              <button className='delete' onClick={() => handleDelete(patient.id)}>Delete</button>
               </td>
             </tr>
           ))}

@@ -109,3 +109,7 @@ button {
 a {
   color: black;
 }
+
+button.delete{
+  background-color: hsl(0, 37%, 38%);
+}
